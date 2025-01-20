@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='https://fonts.googleapis.com/css?family=Open Sans' rel='stylesheet'>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/purecss@3.0.0/build/pure-min.css" integrity="sha384-X38yfunGUhNzHpBaEBsWLO+A0HDYOQi8ufWDkZ0k9e0eXz/tH3II7uKZ9msv++Ls" crossorigin="anonymous">
+    <link rel="stylesheet" href="styles.css">
+    <title>CAN Bus Lab</title>
+</head>
+<body onload="refresh()">
+
+<h1>CAN Bus Replay Attack Lab</h1>
+
+<div id="popup">
+    <h2>Instructions</h2>
+    <p>Welcome to the Key Fob Cloning Lab! In this lab you will learn how a replay attack may be conducted on a vulnerable car by cloning keyfobs.</p>
+    <p>Your goal is to clone the keyfobs such that all of them open the car door. To complete the lab you must:</p>
+    <ol>
+        <li>Test the different keyfobs and see if they can open the door</li>
+        <li>Scan the keyfob that opens the door</li>
+        <li>Write to the blank keyfobs to clone the key</li>
+        <li>Open the car door using the cloned keyfobs</li>
+    </ol>
+    <p>Good luck!</p>
+    <button id="close-popup" class="pure-button pure-button-primary" onclick="closePopup()">Close</button>
+</div>
+
+<div id="keyfob-container">
+    <h2>Key Fobs</h2>
+    <div id="keyfob-row">
+        <img id="keyfob-0" src="icons/keyfob.svg" onclick="selectKeyfob(this)" class="icon keyfob"></img>
+        <img id="keyfob-1" src="icons/keyfob.svg" onclick="selectKeyfob(this)" class="icon keyfob"></img>
+        <img id="keyfob-2" src="icons/keyfob.svg" onclick="selectKeyfob(this)" class="icon keyfob"></img>
+        <img id="keyfob-3" src="icons/keyfob.svg" onclick="selectKeyfob(this)" class="icon keyfob"></img>
+    </div>
+</div>
+
+<div id="big-container">
+    <div id="car-section">
+        <h2>Car</h2>
+        <object id="door" data="icons/car-door-closed.svg" class="car-door"></object>
+        <button id="door-button" class="button-icon pure-button" onclick="unlockDoor()">Open Door</button>
+    </div>
+
+    <div id="scanner-section">
+        <h2>Scanner</h2>
+        <object id="scanner" data="icons/sensor-icon.svg" class="icon"></object>
+        <form class="pure-form pure-form-aligned" onsubmit="return false">
+            <div class="pure-control-group">
+                <button id="scanner-read-button" class="button-icon pure-button" onclick="scanKeyfob()">Scan Key Fob</button>
+                <input id="scanned-data" readOnly="" class="pure-input-1-2"></input>               
+            </div>
+            <div class="pure-control-group">
+                <button id="scanner-write-button" class="button-icon pure-button" onclick="writeKeyfob()">Write To Key Fob</button>
+                <input id="scanner-input" type="text" class="pure-input-2-2"></input>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html> 
