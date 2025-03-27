@@ -39,7 +39,7 @@ function unlockDoor() {
         id = getKeyfobID()
         key = state.keyfobs[id]
         if (key == DOOR_UNLOCK) {
-            DOOR.data = "icons/car-door-icon.svg"
+            DOOR.src = "icons/car-door-icon.svg"
             setTimeout(closeDoor, 3000);
         }
     } else {
@@ -48,7 +48,7 @@ function unlockDoor() {
 }
 
 function closeDoor() {
-    DOOR.data = "icons/car-door-closed.svg"
+    DOOR.src = "icons/car-door-closed.svg"
 }
 
 // Scan key fob
